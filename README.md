@@ -16,7 +16,7 @@ This project contains sample content and a dash-js based player to demostrate an
 
 ## Video of observed behavior
 
- - https://
+ - Video on [YouTube](https://youtu.be/Yzwk1ob0TbA)
 
 ## Expected behavior
  - The captions should start playing during the second period
