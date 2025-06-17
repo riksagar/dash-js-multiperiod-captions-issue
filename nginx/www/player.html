@@ -1,0 +1,59 @@
+
+<html>
+    <script src="./dashjs/dash.all.debug.js"></script>
+
+    <body>
+        <video width="1600" height="900" controls></video>
+    </body>
+
+
+    <script>
+        function init() {
+            var video,
+                player,
+                url = "/media/manifest-mutiperiod.mpd";
+
+            player = dashjs.MediaPlayer().create();
+            video = document.querySelector("video");
+            player.initialize(); /* initialize the MediaPlayer instance */
+
+            player.updateSettings({
+                'debug': {
+                    'logLevel': dashjs.Debug.LOG_LEVEL_DEBUG  /* turns off console logging */
+                },
+                'streaming': {
+                    'scheduling': {
+                        'scheduleWhilePaused': false,   /* stops the player from loading segments while paused */
+                    },
+                    'buffer': {
+                        'fastSwitchEnabled': true   /* enables buffer replacement when switching bitrates for faster switching */
+                    }
+                }
+            });
+            player.setAutoPlay(false); /* remove this line if you want the player to start automatically on load */
+            player.attachView(video); /* tell the player which videoElement it should use */
+            player.attachSource(url); /* provide the manifest source */
+
+            const { MediaPlayer } = dashjs;
+            const { events: { STREAM_ACTIVATED } } = MediaPlayer
+            player.on(STREAM_ACTIVATED, () => {
+                const dashAudioTracks = player.getTracksFor("audio");
+                const dashImageTracks = player.getTracksFor("image");
+                const dashTextTracks = player.getTracksFor("text");
+                const dashVideoTracks = player.getTracksFor("video");
+
+                console.log("available tracks", dashAudioTracks, dashImageTracks, dashTextTracks, dashVideoTracks);
+
+                const trackToSelect = dashTextTracks.filter(track => {
+                    return track.lang === "pt"
+                });
+                console.log("lets try use ", trackToSelect);
+                // if (trackToSelect?.length) player.setTextTrack(trackToSelect[0].index);
+            });
+
+        }
+
+        setTimeout(init, 100);
+    </script>
+</html>
+

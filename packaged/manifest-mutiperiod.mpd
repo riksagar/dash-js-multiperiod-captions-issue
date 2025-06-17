@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MPD xmlns="urn:mpeg:dash:schema:mpd:2011" type="static" mediaPresentationDuration="PT90S" minBufferTime="PT1.5S" profiles="urn:mpeg:dash:profile:isoff-on-demand:2011">
+
+  <!-- Period 1 -->
+  <Period id="1" start="PT0S" duration="PT6S">
+    <AdaptationSet id="adaptation-video-preroll" contentType="video" width="1920" height="1080" frameRate="30000/1001" subsegmentAlignment="true" par="16:9" mimeType="video/mp4">
+      <SupplementalProperty schemeIdUri="urn:mpeg:mpegB:cicp:TransferCharacteristics" value="1"/>
+      <Representation id="video1" bandwidth="10524981" codecs="avc1.640028" mimeType="video/mp4" sar="1:1">
+        <BaseURL>video-pre-roll.mp4</BaseURL>
+        <SegmentBase indexRange="888-931" timescale="30000">
+          <Initialization range="0-887"/>
+        </SegmentBase>
+      </Representation>
+    </AdaptationSet>
+
+    <!-- Audio AdaptationSet -->
+    <AdaptationSet id="adaptation-audio-preroll" contentType="audio" lang="en" subsegmentStartsWithSAP="1" subsegmentAlignment="true" mimeType="audio/mp4" codecs="mp4a.40.2">
+      <Representation id="audio1" bandwidth="384145" codecs="mp4a.40.2" mimeType="audio/mp4" audioSamplingRate="48000">
+        <AudioChannelConfiguration schemeIdUri="urn:mpeg:dash:23003:3:audio_channel_configuration:2011" value="2"/>
+        <BaseURL>audio-pre-roll.mp4</BaseURL>
+        <SegmentBase indexRange="768-811" timescale="48000">
+          <Initialization range="0-767"/>
+        </SegmentBase>
+      </Representation>
+    </AdaptationSet>
+  </Period>
+
+  <!-- Period 2 -->
+  <Period id="2" start="PT6S" duration="PT40S">
+    <AdaptationSet id="adaptation-video-main" contentType="video" width="1920" height="1080" frameRate="30000/1001" subsegmentAlignment="true" par="16:9" mimeType="video/mp4">
+      <Representation id="video2" bandwidth="17076422" codecs="avc1.640028" mimeType="video/mp4" sar="1:1">
+        <BaseURL>video-main.mp4</BaseURL>
+        <SegmentBase indexRange="888-1003" timescale="30000">
+          <Initialization range="0-887"/>
+        </SegmentBase>
+      </Representation>
+    </AdaptationSet>
+
+    <!-- Audio AdaptationSet -->
+    <AdaptationSet id="adaptation-audio-main" contentType="audio" lang="en" subsegmentStartsWithSAP="1" subsegmentAlignment="true" mimeType="audio/mp4" codecs="mp4a.40.2">
+      <Representation id="audio2" bandwidth="384288" codecs="mp4a.40.2" mimeType="audio/mp4" audioSamplingRate="48000">
+        <AudioChannelConfiguration schemeIdUri="urn:mpeg:dash:23003:3:audio_channel_configuration:2011" value="2"/>
+        <BaseURL>audio-main.mp4</BaseURL>
+        <SegmentBase indexRange="768-883" timescale="48000">
+          <Initialization range="0-767"/>
+        </SegmentBase>
+      </Representation>
+    </AdaptationSet>
+
+    <!-- Text Tracks -->
+    <AdaptationSet id="adaptation-text-main-en-us" mimeType="text/vtt" lang="en-us" label="english">
+      <Role schemeIdUri="urn:mpeg:dash:role:2011" value="subtitle"/>
+      <Label id="adaptation-text-main-en-us" lang="en-us">English</Label>
+      <Representation id="text-en-us" bandwidth="100">
+        <BaseURL>main.en-us.vtt</BaseURL>
+      </Representation>
+    </AdaptationSet>
+    <AdaptationSet id="adaptation-text-main-pt-br" mimeType="text/vtt" lang="pt-br" label="portuguese">
+      <Role schemeIdUri="urn:mpeg:dash:role:2011" value="subtitle"/>
+      <Label  id="adaptation-text-main-pt-br" lang="pt-br">Portuguese</Label>
+      <Representation id="text-pt-br" bandwidth="100">
+        <BaseURL>main.pt-br.vtt</BaseURL>
+      </Representation>
+    </AdaptationSet>
+    <AdaptationSet id="adaptation-text-main-es-mx" mimeType="text/vtt" lang="es-mx" label="mexican">
+      <Role schemeIdUri="urn:mpeg:dash:role:2011" value="subtitle"/>
+      <Label id="adaptation-text-main-es-mx" lang="es-mx">Spanish</Label>
+      <Representation id="text-es-mx" bandwidth="100">
+        <BaseURL>main.es-mx.vtt</BaseURL>
+      </Representation>
+    </AdaptationSet>
+  </Period>
+
+  <!-- Period 3 -->
+  <Period id="3" start="PT46S" duration="PT10S">
+    <AdaptationSet id="adaptation-video-post-roll" contentType="video" width="1920" height="1080" frameRate="30000/1001" subsegmentAlignment="true" par="16:9" mimeType="video/mp4">
+      <SupplementalProperty schemeIdUri="urn:mpeg:mpegB:cicp:TransferCharacteristics" value="1"/>
+      <Representation id="video3" bandwidth="13619715" codecs="avc1.640028" mimeType="video/mp4" sar="1:1">
+        <BaseURL>video-post-roll.mp4</BaseURL>
+        <SegmentBase indexRange="888-943" timescale="30000">
+          <Initialization range="0-887"/>
+        </SegmentBase>
+      </Representation>
+    </AdaptationSet>
+
+    <!-- Audio AdaptationSet -->
+    <AdaptationSet id="adaptation-audio-post-roll" contentType="audio" lang="en" subsegmentStartsWithSAP="1" subsegmentAlignment="true" mimeType="audio/mp4">
+      <Representation id="audio3" bandwidth="384217" codecs="mp4a.40.2" mimeType="audio/mp4" audioSamplingRate="48000">
+        <AudioChannelConfiguration schemeIdUri="urn:mpeg:dash:23003:3:audio_channel_configuration:2011" value="2"/>
+        <BaseURL>audio-post-roll.mp4</BaseURL>
+        <SegmentBase indexRange="768-823" timescale="48000">
+          <Initialization range="0-767"/>
+        </SegmentBase>
+      </Representation>
+    </AdaptationSet>
+  </Period>
+</MPD>
